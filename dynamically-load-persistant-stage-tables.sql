@@ -19,7 +19,10 @@ BEGIN
     -- 05/23/2020   MAC - Updated to set IS_CURRENT = 0 for replace records
 	-- =============================================
 
-	-- NOTE:	If the PSA table has a compressed column and source columns must be identified within the 
+    -- TODO:
+    --      Make database references dynamic.
+	
+    -- NOTE:	If the PSA table has a compressed column and source columns must be identified within the 
 	--			table definition in the form of extended properties on the target column; 
 	--				IS_COMPRESSED
 	--				COMPRESSED_SOURCE_COLUMN
@@ -80,7 +83,7 @@ BEGIN
 	INSERT INTO @stgColumns
 	SELECT 
 		stgColumns.name
-	FROM hpXr_Stage.sys.columns stgColumns
+	FROM hpXr_Stage.sys.columns stgColumns 
 		JOIN (
 			--This join will only add columns to the stage columns table that are also columns on the psa table
 			SELECT 
